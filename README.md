@@ -1,2 +1,2 @@
 # studio
-ttttt
+npm start
