@@ -1,0 +1,24 @@
+{
+  "name": "studio",
+  "version": "1.0.0",
+  "description": "ttttt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axseniia/studio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/axseniia/studio/issues"
+  },
+  "homepage": "https://github.com/axseniia/studio#readme",
+  "devDependencies": {
+    "react": "^18.2.0",
+    "typescript": "^4.9.4"
+  }
+}
