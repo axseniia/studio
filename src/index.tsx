@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { StudentSnippet } from "./components/StudentSnippet";
-import { IStudent } from './interfaces/interfaces';
+import { StudentsList } from "./components/studentsList/StudentsList";
+import { listOfStudents } from "./data";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<StudentSnippet {...{ name: "John", email: "ddd"}} />);
+root.render(<StudentsList students = {listOfStudents}/>);
