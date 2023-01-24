@@ -1,0 +1,13 @@
+.groupCheckbox {
+    padding: 12px;
+    margin-top: 12px;
+    margin-right: 12px;
+    border-radius: 6px;
+    border: 1px solid #4c47db;
+    flex-grow: 2;
+    cursor: pointer;
+}
+
+.groupCheckbox.active {
+    background-color: #4c47db;
+}
