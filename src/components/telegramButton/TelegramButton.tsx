@@ -6,7 +6,7 @@ export function TelegramButton({telegram}: {telegram: string}) {
     return (
         <div className="telegramButton">
             <a href={link}>
-                <img className="telegramIcon"src= './telegram.png'/>
+                <img className="telegramIcon" src= './telegram.png'/>
             </a>
         </div>
     );
