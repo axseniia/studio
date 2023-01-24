@@ -45,9 +45,6 @@
         "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
       },
       "Groups": {
-        "_": {
-          "items": 2
-        },
         "string": [
           "Contemp",
           "FrameUP",
