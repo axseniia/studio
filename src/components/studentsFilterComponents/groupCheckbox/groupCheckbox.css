@@ -6,6 +6,7 @@
     border: 1px solid #4c47db;
     flex-grow: 2;
     cursor: pointer;
+    text-align: center;
 }
 
 .groupCheckbox.active {

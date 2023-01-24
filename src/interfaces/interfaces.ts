@@ -8,3 +8,8 @@ export interface IStudent {
 }
 
 export type StudentList = IStudent[];
+
+export type IGroupCheckbox = {
+  name: string;
+  active: boolean;
+}

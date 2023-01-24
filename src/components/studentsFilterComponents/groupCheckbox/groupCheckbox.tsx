@@ -1,11 +1,18 @@
 import * as React from 'react';
+import { StudentsContext } from "../../../context/context";
+
 import './groupCheckbox.css';
 
-export function GroupCheckbox({group, active}: {group: string, active: boolean}) {
+export function GroupCheckbox({name, active, onClick}: {name: string, active: boolean, onClick: () => void}) {
     const className = `groupCheckbox ${active ? 'active': ''}`;
     return (
-        <div className={className}>
-            {group}
-        </div>
+        <StudentsContext.Consumer>
+            {() => (
+                <div className={className} onClick={onClick}>
+                    {name}
+                </div>
+            )}
+        </StudentsContext.Consumer>
+        
     );
 }
