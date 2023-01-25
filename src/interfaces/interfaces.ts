@@ -1,10 +1,16 @@
 export interface IStudent {
+  id: string,
   name: string;
   surname: string;
   email: string;
-  telegram: string;
+  avatarUrl: string;
   phone: string;
-  status: 'active' | 'inactive';
+  Groups: 'Contemp' | 'FrameUP' | 'HipHop' | 'HighHeels' | 'Stretching' | 'DanceHall';
 }
 
 export type StudentList = IStudent[];
+
+export type IGroupCheckbox = {
+  name: string;
+  active: boolean;
+}

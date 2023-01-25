@@ -1,0 +1,5 @@
+.groupFilter {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 12px -8px 12px 0px
+}

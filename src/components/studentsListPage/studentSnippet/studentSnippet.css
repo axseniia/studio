@@ -1,0 +1,11 @@
+.studentSnippet {
+    border-radius: 6px;
+    margin: 6px;
+    cursor: pointer;
+    background-color: #020408;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #2d2d30;
+    padding: 12px 8px;
+}

@@ -1,0 +1,12 @@
+.pageHeader {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 16px;
+}
+
+.studentsCounter {
+    text-align: right;
+    font-style: italic;
+    color: #7f7f7f;
+    margin: 12px;
+}
