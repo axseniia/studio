@@ -1,8 +1,8 @@
 import * as React from "react";
 import { StudentSnippet } from "../studentSnippet/StudentSnippet";
-import { IStudent, StudentList } from "../../interfaces/interfaces";
-import { StudentsFilters } from "../studentsFilterComponents/studentsFilters/StudentsFilters";
-import { StudentsContext } from "../../context/context";
+import { IStudent, StudentList } from "../../../interfaces/interfaces";
+import { StudentsFilters } from "../../studentsFilterComponents/studentsFilters/StudentsFilters";
+import { StudentsContext } from "../../../context/context";
 import './studentsList.css';
 
 export function StudentsList() {
