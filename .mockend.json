@@ -1,5 +1,5 @@
 {
-    "Post": {
+    "Student": {
         "id": {
             "regexp": "[a-z]{5,10}@[a-z]{5}"
         }
