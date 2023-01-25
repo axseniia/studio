@@ -2,9 +2,9 @@ export interface IStudent {
   name: string;
   surname: string;
   email: string;
-  telegram: string;
+  avatarUrl: string;
   phone: string;
-  status: 'active' | 'inactive';
+  Groups: 'Contemp' | 'FrameUP' | 'HipHop' | 'HighHeels' | 'Stretching' | 'DanceHall';
 }
 
 export type StudentList = IStudent[];

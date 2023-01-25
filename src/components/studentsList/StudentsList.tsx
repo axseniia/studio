@@ -8,10 +8,10 @@ import './studentsList.css';
 export function StudentsList() {
     return (
         <StudentsContext.Consumer>
-            {({students}: {students: StudentList}) => (
+            {({students, studentsCounter}: {students: StudentList, studentsCounter: number}) => (
                 <div className="studentsList">
                     <StudentsFilters/>
-                    <div className='studentsCounter'>150 students</div>
+                    <div className='studentsCounter'>{studentsCounter} students</div>
                     {students.map((student: IStudent, index: number) => (
                         <StudentSnippet key={index} {...student} />
                     ))}
