@@ -1,9 +1,13 @@
 import * as React from "react";
-import { groupFilter } from "../../../data";
+import { RouterProvider } from "react-router-dom";
 import { Header } from "../header/Header";
-import { StudentsList } from "../../studentsList/StudentsList";
 import { Footer } from "../footer/Footer";
+
+import { router } from "../../../router/router";
+
 import { StudentsContext } from "../../../context/context";
+import { groupFilter } from "../../../data";
+
 import './app.css';
 
 export function App() {
@@ -22,7 +26,7 @@ export function App() {
                 setStudentsCounter(data.length);
             });
         }
-    });
+        });
 
     return (
         <StudentsContext.Provider value = {
@@ -38,7 +42,7 @@ export function App() {
             }
         }>
             <Header/>
-            <StudentsList/>
+            <RouterProvider router={router} />
             <Footer/>
         </StudentsContext.Provider>
     );
