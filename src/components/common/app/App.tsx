@@ -13,12 +13,15 @@ export function App() {
     const [students, setStudents] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('https://mockend.com/axseniia/studio/users')
+        //TODO: какой-то грязный хак, чтобы не запрашивалось на каждый рендер. Надо разобраться, как правильно сделать. Если 0 студентов то говно
+        if (students.length === 0) {
+            fetch('https://mockend.com/axseniia/studio/users')
             .then(response => response.json())
             .then(data => {
                 setStudents(data);
                 setStudentsCounter(data.length);
             });
+        }
     });
 
     return (
