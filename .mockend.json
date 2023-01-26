@@ -48,7 +48,11 @@
         "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
       },
       "groups": {
-        "hasMany": "Group"
+        "int":{ 
+            "_": { "items": 10 },
+            "min": 0, 
+            "max": 5
+        }
       },
       "email": {
         "regexp": "[a-z]{5,10}@[a-z]{5}\\.[a-z]{2,3}"
@@ -56,14 +60,5 @@
       "phone": {
         "regexp": "\\+380[0-9]{9}"
       }
-    },
-    "Group": {
-      "_": {
-        "items": 2
-      },
-      "user": {
-        "belongsTo": "user"
-      },
-      "int":{ "min": 0, "max": 5}
     }
 }
