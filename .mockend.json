@@ -48,7 +48,6 @@
         "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
       },
       "groups": {
-        "_": { "items": 10 },
         "int":{ 
             "min": 0, 
             "max": 5
