@@ -58,6 +58,9 @@
       },
       "phone": {
         "regexp": "\\+380[0-9]{9}"
+      },
+      "hasActiveAbonement": {
+        "boolean": {}
       }
     }
 }
