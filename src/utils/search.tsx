@@ -1,8 +1,13 @@
-import { IGroupCheckbox, StudentList, IStudent, IStudentsFilters } from '../interfaces/interfaces';
+import { 
+    IGroupCheckbox, 
+    StudentList, 
+    IStudent, 
+    IStudentsFilters
+} from '../interfaces/interfaces';
 
-export function filterStudents (filters: IStudentsFilters, tierStudents : any) {
+export function filterStudents (filters: IStudentsFilters, tierStudents: any) {
     const students = trieSearch(filters.searchFilter, tierStudents);
-    const activeGroups = filters.groupFilter.reduce((acc: number[], group:IGroupCheckbox) => {
+    const activeGroups = filters.groupFilter.reduce((acc: number[], group: IGroupCheckbox) => {
         if (group.active) {
             acc.push(group.type);
         }
@@ -31,17 +36,21 @@ function trieSearch (word: string, trie: any) {
 
 export function createTrieForStudentsList(students: StudentList) {
     const trie = { children: students };
-    const fillNode = (tierNode: any, letters: string[], node: any) => {
+    const fillNode = (tierNode: any, letters: string[], node: IStudent) => {
         if(letters.length === 0) {
             return;
         }
         
         const currentLetter = letters[0];
+
         if (!tierNode[currentLetter]) {
-            tierNode[currentLetter] = { children: [] };  
+            tierNode[currentLetter] = { children: [], childrenIds: [] };  
         }
 
-        tierNode[currentLetter].children.push(node);
+        if(!tierNode[currentLetter].childrenIds.includes(node.id)) {
+            tierNode[currentLetter].children.push(node);
+            tierNode[currentLetter].childrenIds.push(node.id);
+        }
 
         fillNode(tierNode[currentLetter], letters.slice(1), node);
     }
@@ -51,9 +60,8 @@ export function createTrieForStudentsList(students: StudentList) {
         const name = student.name.toLowerCase().split('');
         const surname = student.surname.toLowerCase().split('');
         fillNode(trie, [...name, ...surname], student);
-        //TODO
-        //fillNode(trie, [...surname, ...name,], student);
-    }  
-    
+        fillNode(trie, [...surname, ...name,], student);
+    }
+
     return trie;
 }
