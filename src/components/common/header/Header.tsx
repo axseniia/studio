@@ -7,7 +7,9 @@ export function Header() {
     return (
         <div className="header">
             <Menu />
-            <p>Studio name</p>
+            <a href = '/'> 
+                <p>Studio name</p>
+            </a>
             <User />
         </div>
     );

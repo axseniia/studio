@@ -1,0 +1,12 @@
+.hasActiveAbonementFilter {
+    margin-top: 12px;
+}
+
+.hasActiveAbonementFilter .Checkbox {
+    margin-right: 0px;
+    border: 1px solid #4c47db;
+}
+
+.hasActiveAbonementFilter .Checkbox.active {
+    background-color: #4c47db;
+}

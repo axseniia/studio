@@ -6,39 +6,38 @@ import { Footer } from "../footer/Footer";
 import { router } from "../../../router/router";
 
 import { StudentsContext } from "../../../context/context";
-import { groupFilter } from "../../../data";
+import { filters } from "../../../data";
+import { 
+    filterStudents,
+    createTrieForStudentsList 
+} from '../../../utils/search';
+import { IStudentsFilters } from '../../../interfaces/interfaces';
 
 import './app.css';
 
 export function App() {
-    const [searchFilter, setSearchFilter] = React.useState('');
+    const [studentsFilters, setFilter] = React.useState(filters);
+    const [tierStudents, setTierStudents] = React.useState({});
+    const [filteredStudents, setFilteredStudents] = React.useState([]);
     const [studentsCounter, setStudentsCounter] = React.useState(0);
-    const [groupFilters, setGroupFilter] = React.useState(groupFilter);
-    const [students, setStudents] = React.useState([]);
 
     React.useEffect(() => {
-        //TODO: какой-то грязный хак, чтобы не запрашивалось на каждый рендер. Надо разобраться, как правильно сделать. Если 0 студентов то говно
-        if (students.length === 0) {
-            fetch('https://mockend.com/axseniia/studio/users')
+        fetch('https://mockend.com/axseniia/studio/users')
             .then(response => response.json())
             .then(data => {
-                setStudents(data);
-                setStudentsCounter(data.length);
-            });
-        }
-        });
+                setTierStudents(createTrieForStudentsList(data));
+                setFilteredStudents(data);
+                setStudentsCounter(data.length); 
+            });       
+    },[]);
 
     return (
         <StudentsContext.Provider value = {
             {
-                students, 
-                searchFilter, 
-                groupFilters,
-                studentsCounter, 
-                setSearchFilter, 
-                setGroupFilter, 
-                setStudents,
-                setStudentsCounter
+                filteredStudents,
+                studentsFilters,
+                studentsCounter,
+                onFiltersChange
             }
         }>
             <Header/>
@@ -46,4 +45,11 @@ export function App() {
             <Footer/>
         </StudentsContext.Provider>
     );
+
+    function onFiltersChange(newFilters: IStudentsFilters) {
+        const newFilteredStudents = filterStudents(newFilters, tierStudents);
+        setFilteredStudents(newFilteredStudents);
+        setFilter(newFilters);
+        setStudentsCounter(newFilteredStudents.length);
+    };
 }
