@@ -1,12 +1,12 @@
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { StudentsList } from "../components/studentsListPage/studentsList/StudentsList";
+import { StudentsListPage } from "../components/studentsListPage/studentsListPage";
 import { StudentPage } from "../components/studentPage/StudentPage";
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <StudentsList/>,
+        element: <StudentsListPage/>,
         children: [],
     },
     {

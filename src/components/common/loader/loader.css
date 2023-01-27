@@ -1,0 +1,51 @@
+.loader__item {
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+.loader__item--1{
+    background-color: #4b47db;
+}
+
+.loader__item--2{
+    background-color: #4847da;
+}
+
+.loader__item--3{
+    background-color: #8645ea;
+}
+
+.loader__item--4{
+    background-color: #7846e6;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    width: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    animation-duration: 2s;
+    animation-name: loader;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
