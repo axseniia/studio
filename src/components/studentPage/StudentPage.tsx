@@ -10,13 +10,13 @@ import "./StudentPage.css";
 export function StudentPage() {
     return (
         <StudentsContext.Consumer>
-            {({students} : {students: StudentList}) => students.length ? (
+            {({filteredStudents} : {filteredStudents: StudentList}) => filteredStudents.length ? (
                 <div className="studentPage">
                     <div className="studentGeneralInfo">
-                        <img className='studentPhoto' src={students[5].avatarUrl}/>
+                        <img className='studentPhoto' src={filteredStudents[5].avatarUrl}/>
                         <div>
-                            <div className='studentName'>{students[5].name} {students[5].surname}</div>
-                            <StudentContacts phone={students[5].phone} />
+                            <div className='studentName'>{filteredStudents[5].name} {filteredStudents[5].surname}</div>
+                            <StudentContacts phone={filteredStudents[5].phone} />
                         </div>
                     </div>
                     <div className="studentGroups">
