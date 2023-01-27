@@ -18,7 +18,7 @@ import './app.css';
 export function App() {
     const [studentsFilters, setFilter] = React.useState(filters);
     const [tierStudents, setTierStudents] = React.useState({});
-    const [filteredStudents, setFilteredStudents] = React.useState([]);
+    const [filteredStudents, setFilteredStudents] = React.useState();
     const [studentsCounter, setStudentsCounter] = React.useState(0);
 
     React.useEffect(() => {
