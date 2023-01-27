@@ -1,0 +1,10 @@
+.studentContacts {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.contactIcon {
+    width: 45px;
+    height: 45px;
+}

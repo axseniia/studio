@@ -19,16 +19,20 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    historyApiFallback: true
+  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: "src/index.html"
+        template: "src/index.html",
     }),
     new CopyPlugin({
       patterns: [

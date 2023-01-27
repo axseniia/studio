@@ -1,3 +1,4 @@
+//TODO groups must be an array of numbers
 export interface IStudent {
   id: string,
   name: string;
@@ -5,12 +6,21 @@ export interface IStudent {
   email: string;
   avatarUrl: string;
   phone: string;
-  Groups: 'Contemp' | 'FrameUP' | 'HipHop' | 'HighHeels' | 'Stretching' | 'DanceHall';
+  groups: number;
+  hasActiveAbonement: boolean;
 }
 
 export type StudentList = IStudent[];
 
-export type IGroupCheckbox = {
+export interface IGroupCheckbox {
   name: string;
   active: boolean;
+  type: number;
 }
+
+export interface IStudentsFilters {
+  groupFilter: IGroupCheckbox[];
+  searchFilter: string;
+  activeAbonementFilter: boolean;
+};
+
