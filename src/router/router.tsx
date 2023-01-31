@@ -13,4 +13,8 @@ export const router = createBrowserRouter([
         path: "user/:id",
         element: <StudentPage/>,
     },
+    {
+        path: "*",
+        element: <div>404</div>,
+    }
 ]);

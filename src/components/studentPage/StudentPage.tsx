@@ -13,11 +13,14 @@ export function StudentPage() {
     const [student, setStudent] = React.useState({} as IStudent);
 
     React.useEffect(() => {
-        fetch(endPoints.getStudentURL(id))
+        fetch(endPoints.studentURL(id))
             .then(response => response.json())
             .then(data => {
                 setStudent(data);
-            });       
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });;       
     },[]);
     const component = (
         <div className="studentPage">
