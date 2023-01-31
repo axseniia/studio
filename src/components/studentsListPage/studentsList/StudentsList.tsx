@@ -9,17 +9,11 @@ import './studentsList.css';
 export function StudentsList() {
     return (
         <StudentsContext.Consumer>
-            {({
-                filteredStudents, 
-                studentsCounter
-            }: {
-                filteredStudents: StudentList, 
-                studentsCounter: number
-            }) => filteredStudents ? (
+            {({filteredStudents }: { filteredStudents: StudentList }) => filteredStudents ? (
                 <div className="studentsList">
                     <div className='studentsCounter'>{filteredStudents.length} students</div>
                     {filteredStudents.map((student: IStudent, index: number) => (
-                        <StudentSnippet key={index} {...student} />
+                        <StudentSnippet key={student.id} {...student} />
                     ))}
                 </div>
             ) : <Loader/>}

@@ -6,7 +6,7 @@ import { Footer } from "../footer/Footer";
 import { router } from "../../../router/router";
 
 import { StudentsContext } from "../../../context/context";
-import { filters } from "../../../data";
+import { filters } from "../../../utils/data";
 import { 
     filterStudents,
     createTrieForStudentsList 
@@ -15,18 +15,20 @@ import { IStudentsFilters } from '../../../interfaces/interfaces';
 
 import './app.css';
 
-let tierStudents = {}
-
 export function App() {
     const [studentsFilters, setFilter] = React.useState(filters);
-    const [filteredStudents, setFilteredStudents] = React.useState();
+    const [tierStudents, setTierStudents] = React.useState({});
+    const [filteredStudents, setFilteredStudents] = React.useState([]);
+    const [studentsCounter, setStudentsCounter] = React.useState(0);
 
     React.useEffect(() => {
-        fetch('https://mockend.com/axseniia/studio/users')
+        fetch('http://localhost:3000/studentsList')
             .then(response => response.json())
             .then(data => {
-                tierStudents = createTrieForStudentsList(data);
+                console.log(data);
+                setTierStudents(createTrieForStudentsList(data));
                 setFilteredStudents(data);
+                setStudentsCounter(data.length); 
             });       
     },[]);
 
@@ -35,6 +37,7 @@ export function App() {
             {
                 filteredStudents,
                 studentsFilters,
+                studentsCounter,
                 onFiltersChange
             }
         }>
@@ -48,5 +51,6 @@ export function App() {
         const newFilteredStudents = filterStudents(newFilters, tierStudents);
         setFilteredStudents(newFilteredStudents);
         setFilter(newFilters);
+        setStudentsCounter(newFilteredStudents.length);
     };
 }

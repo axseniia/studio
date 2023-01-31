@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
         children: [],
     },
     {
-        path: "user/:userId",
+        path: "user/:id",
         element: <StudentPage/>,
     },
 ]);

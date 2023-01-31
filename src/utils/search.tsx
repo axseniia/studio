@@ -14,7 +14,7 @@ export function filterStudents (filters: IStudentsFilters, tierStudents: any) {
         return acc;
     },[]);
     return students.filter((student: IStudent) => {
-        const hasSelectedGroups = activeGroups.every((group: number) => student.groups === group);
+        const hasSelectedGroups = activeGroups.every((group: number) => student.groups.includes(group));
         const hasActiveAbonement = !filters.activeAbonementFilter || student.hasActiveAbonement === filters.activeAbonementFilter;
         return hasSelectedGroups && hasActiveAbonement;
     })
