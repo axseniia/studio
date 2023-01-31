@@ -1,29 +1,39 @@
 import * as React from "react";
-import { StudentsContext } from "../../context/context";
+import { useParams } from "react-router-dom";
 import { StudentContacts } from './studentContacts/StudentContacts';
 import { Loader } from "../common/loader/Loader";
 
-import { StudentList } from "../../interfaces/interfaces";
+import { IStudent } from "../../interfaces/interfaces";
+import { endPoints } from '../../utils/endPoints';
 
 import "./StudentPage.css";
 
-//TODO: убрать хардкод студента
 export function StudentPage() {
-    return (
-        <StudentsContext.Consumer>
-            {({filteredStudents} : {filteredStudents: StudentList}) => filteredStudents && filteredStudents.length ? (
-                <div className="studentPage">
-                    <div className="studentGeneralInfo">
-                        <img className='studentPhoto' src={filteredStudents[0].avatarUrl}/>
-                        <div>
-                            <div className='studentName'>{filteredStudents[0].name} {filteredStudents[0].surname}</div>
-                            <StudentContacts phone={filteredStudents[0].phone} />
-                        </div>
-                    </div>
-                    <div className="studentGroups">
-                    </div>
+    const { id } = useParams();
+    const [student, setStudent] = React.useState({} as IStudent);
+
+    React.useEffect(() => {
+        fetch(endPoints.studentURL(id))
+            .then(response => response.json())
+            .then(data => {
+                setStudent(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });;       
+    },[]);
+    const component = (
+        <div className="studentPage">
+            <div className="studentGeneralInfo">
+                <img className='studentPhoto' src={student.avatarUrl}/>
+                <div>
+                    <div className='studentName'>{student.name} {student.surname}</div>
+                    <StudentContacts phone={student.phone} />
                 </div>
-            ) : <Loader/>}
-        </StudentsContext.Consumer>
-    );
+            </div>
+            <div className="studentGroups">
+            </div>
+        </div>);
+
+    return student.name ? component : <Loader />;
 }

@@ -6,7 +6,7 @@ export interface IStudent {
   email: string;
   avatarUrl: string;
   phone: string;
-  groups: number;
+  groups: number[];
   hasActiveAbonement: boolean;
 }
 
