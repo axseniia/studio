@@ -23,4 +23,3 @@ export interface IStudentsFilters {
   searchFilter: string;
   activeAbonementFilter: boolean;
 };
-

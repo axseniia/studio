@@ -15,19 +15,18 @@ import { IStudentsFilters } from '../../../interfaces/interfaces';
 
 import './app.css';
 
+let tierStudents = {}
+
 export function App() {
     const [studentsFilters, setFilter] = React.useState(filters);
-    const [tierStudents, setTierStudents] = React.useState({});
     const [filteredStudents, setFilteredStudents] = React.useState();
-    const [studentsCounter, setStudentsCounter] = React.useState(0);
 
     React.useEffect(() => {
         fetch('https://mockend.com/axseniia/studio/users')
             .then(response => response.json())
             .then(data => {
-                setTierStudents(createTrieForStudentsList(data));
+                tierStudents = createTrieForStudentsList(data);
                 setFilteredStudents(data);
-                setStudentsCounter(data.length); 
             });       
     },[]);
 
@@ -36,7 +35,6 @@ export function App() {
             {
                 filteredStudents,
                 studentsFilters,
-                studentsCounter,
                 onFiltersChange
             }
         }>
@@ -50,6 +48,5 @@ export function App() {
         const newFilteredStudents = filterStudents(newFilters, tierStudents);
         setFilteredStudents(newFilteredStudents);
         setFilter(newFilters);
-        setStudentsCounter(newFilteredStudents.length);
     };
 }
