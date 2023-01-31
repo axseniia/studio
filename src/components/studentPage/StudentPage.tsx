@@ -11,7 +11,7 @@ import "./StudentPage.css";
 export function StudentPage() {
     return (
         <StudentsContext.Consumer>
-            {({filteredStudents} : {filteredStudents: StudentList}) => filteredStudents.length ? (
+            {({filteredStudents} : {filteredStudents: StudentList}) => filteredStudents && filteredStudents.length ? (
                 <div className="studentPage">
                     <div className="studentGeneralInfo">
                         <img className='studentPhoto' src={filteredStudents[0].avatarUrl}/>

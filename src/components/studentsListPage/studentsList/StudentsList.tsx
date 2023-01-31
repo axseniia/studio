@@ -1,7 +1,6 @@
 import * as React from "react";
 import { StudentSnippet } from "../studentSnippet/StudentSnippet";
 import { Loader } from "../../common/loader/Loader";
-import { StudentsFilters } from "../../studentsFilterComponents/studentsFilters/StudentsFilters";
 
 import { IStudent, StudentList } from "../../../interfaces/interfaces";
 import { StudentsContext } from "../../../context/context";
@@ -18,7 +17,7 @@ export function StudentsList() {
                 studentsCounter: number
             }) => filteredStudents ? (
                 <div className="studentsList">
-                    <div className='studentsCounter'>{studentsCounter} students</div>
+                    <div className='studentsCounter'>{filteredStudents.length} students</div>
                     {filteredStudents.map((student: IStudent, index: number) => (
                         <StudentSnippet key={index} {...student} />
                     ))}
